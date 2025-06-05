@@ -1,0 +1,323 @@
+@mixin gameScenario($scenario-name, $background-image-url, $color-light, $color-neutral, $color-dark-hover, $color-dark,
+ $color-shadow, $color-smaller, $color-bigger, $color-equal, $color-disabled, $color-alert, $border-radius) {
+  #game-body {
+    &.#{$scenario-name} {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url($background-image-url) round;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .black-overlay {
+        background: #00000096;
+        backdrop-filter: blur(2px);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+        flex-direction: column;
+        gap: 50px;
+
+        .message {
+          color: white;
+          font-size: 50px;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .button {
+          padding: 30px 60px;
+          background: $color-dark;
+          border-radius: $border-radius;
+          font-weight: bold;
+          font-size: xx-large;
+          cursor: pointer;
+
+          &:hover {
+            background: $color-dark-hover;
+            box-shadow: 0 4px 19px $color-shadow;
+          }
+        }
+      }
+
+      #game-container {
+        background: $color-light;
+        width: 1300px;
+        height: 645px;
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: $border-radius;
+
+        #header {
+          background: $color-neutral;
+          height: 35px;
+          border-radius: $border-radius;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+
+          .level {
+            margin-right: 15px;
+          }
+
+          .alert {
+            width: 500px;
+            height: 40px;
+            background-color: $color-alert;
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-self: baseline;
+            margin-right: 300px;
+            position: relative;
+            z-index: 4;
+
+            .close-alert {
+              position: absolute;
+              right: 8px;
+              top: 2px;
+              color: white;
+              font-size: 13px;
+              cursor: pointer;
+            }
+
+            .message {
+              color: white;
+              font-weight: bold;
+            }
+          }
+        }
+
+        #compare-swap {
+          background: $color-neutral;
+          height: 300px;
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 40px;
+          position: relative;
+          border-radius: $border-radius;
+
+          .big-sortable {
+            height: 280px;
+            min-width: 181px;
+            box-sizing: border-box;
+            position: relative;
+
+            .compare-alert {
+              width: 145px;
+              height: 40px;
+              position: absolute;
+              left: 18px;
+              top: -10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: $border-radius;
+
+              &.smaller {
+                background: $color-smaller;
+              }
+
+              &.bigger {
+                background: $color-bigger;
+              }
+
+              &.equal {
+                background: $color-equal;
+              }
+            }
+
+            &.empty {
+              border: dashed 2px $color-dark;
+
+              &.indistinguishable {
+                background: inherit;
+              }
+            }
+
+            &.indistinguishable {
+              background: black;
+
+              img {
+                display: none;
+              }
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .buttons {
+            height: 300px;
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+
+            .button {
+              background: $color-dark;
+              border-radius: $border-radius;
+              padding: 10px;
+              font-weight: bold;
+              cursor: pointer;
+
+              &[disabled] {
+                pointer-events: none;
+                background: $color-disabled;
+              }
+
+              &:hover {
+                background: $color-dark-hover;
+              }
+            }
+          }
+        }
+
+        #list {
+          margin-top: 10px;
+          background: $color-neutral;
+          height: 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 6px;
+          position: relative;
+          border-radius: $border-radius;
+
+          .sortable {
+            width: 117px;
+            height: 180px;
+            cursor: pointer;
+            box-sizing: border-box;
+            position: relative;
+
+            .compare-alert {
+              width: 60px;
+              height: 40px;
+              position: absolute;
+              left: 26px;
+              top: -11px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              z-index: 1;
+              border-radius: $border-radius;
+
+              &.smaller {
+                background: $color-smaller;
+              }
+
+              &.bigger {
+                background: $color-bigger;
+              }
+
+              &.equal {
+                background: $color-equal;
+              }
+            }
+
+            &[disabled] {
+              pointer-events: none;
+
+              img {
+                opacity: 0.5;
+              }
+            }
+
+            &:hover {
+              box-shadow: 0 4px 19px $color-shadow;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+
+            &.selected {
+              border: dashed 2px $color-dark;
+
+              img {
+                opacity: 0.5;
+              }
+
+              &.indistinguishable {
+                background: #00000080;
+
+                img {
+                  display: none;
+                }
+              }
+            }
+
+            &.indistinguishable {
+              background: black;
+
+              img {
+                display: none;
+              }
+            }
+          }
+
+          .order-label {
+            width: 100px;
+            position: absolute;
+            text-align: center;
+            padding: 12px;
+
+            &.left {
+              background: $color-smaller;
+              left: 0;
+              border-top-right-radius: $border-radius;
+              border-bottom-right-radius: $border-radius;
+            }
+
+            &.right {
+              background: $color-bigger;
+              right: 0;
+              border-top-left-radius: $border-radius;
+              border-bottom-left-radius: $border-radius;
+            }
+          }
+        }
+
+        #footer {
+          margin-top: 8px;
+          height: 57px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+
+          .button {
+            background: $color-dark;
+            border-radius: $border-radius;
+            padding: 12px 40px;
+            font-weight: bold;
+            cursor: pointer;
+
+            &[disabled] {
+              pointer-events: none;
+              background: $color-disabled;
+            }
+
+            &:hover {
+              background: $color-dark-hover;
+            }
+          }
+        }
+      }
+    }
+  }
+}

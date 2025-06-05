@@ -1,0 +1,160 @@
+@import "game-scenario-mixin";
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Manrope", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .prevent-drag {
+    user-drag: none;
+    -webkit-user-drag: none;
+  }
+
+  div[class^='confetti-explosion'], div[class*=' confetti-explosion'] {
+    z-index: 10;
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  .formContainer {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+
+    h1 {
+      text-align: center;
+    }
+  }
+
+  label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .input-text, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 8px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  textarea {
+    height: 120px;
+    font-size: 14px;
+  }
+
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  button[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+
+    &[disabled] {
+      background-color: #bdbdbd;
+      pointer-events: none;
+    }
+  }
+
+  .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+
+    label {
+      margin: 0;
+    }
+  }
+
+  select {
+    font-family: "Manrope", sans-serif;
+    padding: 7px;
+    font-size: 15px;
+    width: 250px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+  }
+
+  // museum
+  $background-image-url: "../assets/museum/background.webp";
+  $color-light: #fffbe9;
+  $color-neutral: #ead9c3;
+  $color-dark-hover: #e7b99b;
+  $color-dark: #dca37e;
+  $color-shadow: #86654f;
+  $color-smaller: #ecb16c;
+  $color-bigger: #ef6b39;
+  $color-equal: #d7d7d7;
+  $color-disabled: #b1b1b1;
+  $color-alert: #d94646;
+  $border-radius: 8px;
+  @include gameScenario("museum", $background-image-url, $color-light, $color-neutral, $color-dark-hover, $color-dark,
+          $color-shadow, $color-smaller, $color-bigger, $color-equal, $color-disabled, $color-alert, $border-radius);
+
+  // perfumes
+  $background-image-url: "../assets/perfumes/background.jpg";
+  $color-light: #fffbe9;
+  $color-neutral: #ead9c3;
+  $color-dark-hover: #e7b99b;
+  $color-dark: #dca37e;
+  $color-shadow: #dbc7ba;
+  $color-smaller: #ecb16c;
+  $color-bigger: #ef6b39;
+  $color-equal: #d7d7d7;
+  $color-disabled: #b1b1b1;
+  $color-alert: #d94646;
+  $border-radius: 8px;
+  @include gameScenario("perfumes", $background-image-url, $color-light, $color-neutral, $color-dark-hover, $color-dark,
+          $color-shadow, $color-smaller, $color-bigger, $color-equal, $color-disabled, $color-alert, $border-radius);
+
+  // cards
+  $background-image-url: "../assets/cards/background.jpg";
+  $color-light: #017533;
+  $color-neutral: #016d2e;
+  $color-dark-hover: #40bb65;
+  $color-dark: #359d55;
+  $color-shadow: #1a3b1a;
+  $color-smaller: #ecb16c;
+  $color-bigger: #ef6b39;
+  $color-equal: #d7d7d7;
+  $color-disabled: #b1b1b1;
+  $color-alert: #d94646;
+  $border-radius: 8px;
+  @include gameScenario("cards", $background-image-url, $color-light, $color-neutral, $color-dark-hover, $color-dark,
+          $color-shadow, $color-smaller, $color-bigger, $color-equal, $color-disabled, $color-alert, $border-radius);
+}

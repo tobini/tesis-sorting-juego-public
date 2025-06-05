@@ -1,0 +1,9 @@
+.idea
+.firebase
+dist
+public
+node_modules
+
+*.iml
+backup/*
+datos/out/*
